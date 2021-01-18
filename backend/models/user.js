@@ -57,14 +57,14 @@ userSchema
         return this._password
     });
 
-userSchema.method = {
+userSchema.methods = {
     authenticate: function(planePassword){
         return this.securePassword(planePassword)===this.encry_password
     },
 
 
     securePassword: function(planePassword){
-        if (!password) return "";
+        if (!planePassword) return "";
         try {
             return crypto.createHmac('sha256',this.salt)
             .update(planePassword)
